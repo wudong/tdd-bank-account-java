@@ -9,7 +9,9 @@ public class Account {
     }
 
     public void withdraw(double amount) {
-        this.balance -=amount;
+        if (balance >= amount) {
+            this.balance -= amount;
+        }
     }
 
     public void transfer(Account account, double balance) {

@@ -23,6 +23,14 @@ public class AccountTest {
     }
 
     @Test
+    public void youCannotWithdrawMoreThanYouHave() {
+        Account account = new Account();
+        account.deposit(5);
+        account.withdraw(10);
+        Assertions.assertThat(account.balance()).isEqualTo(5);
+    }
+
+    @Test
     public void testTransferBetweenTest() {
         Account account = new Account();
         account.deposit(10);
