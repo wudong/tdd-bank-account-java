@@ -8,6 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AccountTest {
 
     @Test
+    public void newAccountWillHaveZeroBalance() {
+        Account account = new Account();
+        Assertions.assertThat(account.balance()).isEqualTo(0);
+    }
+
+    @Test
     public void depositAnAmountToIncreaseTheBalance() {
         Account account = new Account();
         account.deposit(10);
@@ -43,6 +49,22 @@ public class AccountTest {
         Assertions.assertThat(account.balance()).isEqualTo(0);
         Assertions.assertThat(account2.balance()).isEqualTo(20);
     }
+
+
+    @Test
+    public void testTransferBetweenTestForMoreThanYouHave() {
+        Account account = new Account();
+        account.deposit(10);
+
+        Account account2 = new Account();
+        account2.deposit(10);
+
+        account.transfer(account2, 11);
+
+        Assertions.assertThat(account.balance()).isEqualTo(10);
+        Assertions.assertThat(account2.balance()).isEqualTo(10);
+    }
+
 
 
 }
