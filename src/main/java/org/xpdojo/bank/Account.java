@@ -8,12 +8,13 @@ public class Account {
         this.balance +=amount;
     }
 
-    public void withdraw(double balance) {
-
+    public void withdraw(double amount) {
+        this.balance -=amount;
     }
 
     public void transfer(Account account, double balance) {
-
+        withdraw(balance);
+        account.deposit(balance);
     }
 
     public double balance() {
